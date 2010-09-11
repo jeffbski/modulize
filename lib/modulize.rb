@@ -5,9 +5,8 @@
 # or if modulize has already been called, then calling it again is safe and results in
 # a no-op.
 #
-# This makes it safe to use when you do not control the original classes in case they
-# are refactored by the owner. Regardless of how they change, as long as there is still
-# a method there by some means your code will still work
+# This makes it safer to use than alias_method chaining, eliminating the possibility of
+# alias clashes and clutter from multiple use.
 #
 class Module
   # if method is defined in the class/module (not inherited from module or class) then
@@ -20,9 +19,15 @@ class Module
   #
   # @param [Symbol] symbol(s) for method to modulize, one or more
   # @example Modulize a method
-  #   modulize :foo
+  #   class C
+  #     modulize :foo
+  #   end
+  #
   # @example Modulize multiple methods
-  #   modulize :foo, :bar, :baz
+  #   class C
+  #     modulize :foo, :bar, :baz
+  #   end
+  #
   def modulize(*method_syms)
     method_syms.each do |method_sym|
       if instance_methods(false).include?(method_sym) # if not an inherited method continue, otherwise not needed
@@ -43,10 +48,14 @@ class Module
   # @param [Constant] mod_consts module name constant(s), will modulize all instance methods in the module, one or more
   #
   # @example modulize instance methods for module and include module
-  #   modulize_include MyModule
+  #   class C
+  #     modulize_include MyModule
+  #   end
   #
   # @example modulize instance methods for several modules and include the modules
-  #   modulize_include MyModule1, MyModule2, MyModule3
+  #   class C
+  #     modulize_include MyModule1, MyModule2, MyModule3
+  #   end
   #
   # @example shortcut for modulizing and including without re-opening class
   #   MyClass.modulize_include MyMod1, MyMod2, MyMod3
@@ -58,7 +67,7 @@ class Module
     end
   end
 
-  # unmodulize a method that has been modulized, reverts to the original state.
+  # unmodulize a method that has been modulized, reverts to the original state (but does not un-include modules, only disconnects their use in the methods)
   #
   # Care should be taken in using this since if others have also modulized after
   # resulting in simply additional modules to be included, the result of this
@@ -71,10 +80,17 @@ class Module
   # anonymous module that was introduced but it will not be called
   #
   # @param [Symbol] symbol(s) for method to unmodulize, one or more
+  #
   # @example Unmodulize a method
-  #   unmodulize :foo
+  #   class C
+  #     unmodulize :foo
+  #   end
+  #
   # @example Unmodulize multiple methods
-  #   unmodulize :foo, :bar, :baz
+  #   class C
+  #     unmodulize :foo, :bar, :baz
+  #   end
+  #
   def unmodulize(*method_syms)
     method_syms.each do |method_sym|
       methname = method_sym.to_s
@@ -88,15 +104,19 @@ class Module
     end
   end
 
-  # unmodulize instance methods in module(s) that were modulized in
+  # unmodulize instance methods in module(s) that were modulized in (but does not un-include modules, only disconnects their use in the methods)
   #
-  # @param [Constant] mod_consts module name constant(s), will unmodulize all instance methods in the module, one or more
+  # @param [Constant] mod_consts module name constant(s), will unmodulize all instance methods in the module(s), one or more
   #
   # @example unmodulize instance methods for module
-  #   unmodulize_modules MyModule
+  #   class C
+  #     unmodulize_modules MyModule
+  #   end
   #
   # @example unmodulize instance methods for several modules
-  #   unmodulize_modules MyModule1, MyModule2, MyModule3
+  #   class C
+  #     unmodulize_modules MyModule1, MyModule2, MyModule3
+  #   end
   #
   # @example shortcut for unmodulizing and without re-opening class
   #   MyClass.unmodulize_modules MyMod1, MyMod2, MyMod3

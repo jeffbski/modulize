@@ -15,7 +15,9 @@ Safe, easy method extension
 
 ### Given the following
 
-    Class C
+    require 'modulize'
+
+    class C
       def foo
         "C#foo"
       end
@@ -28,9 +30,9 @@ Safe, easy method extension
     end
 
 
-### With manual include
+### Using with manual include and specifying individual module(s)
 
-    Class C
+    class C
       modulize :foo # indicate which method(s) to modulize
       include M1
     end
@@ -38,17 +40,43 @@ Safe, easy method extension
     C.new.foo == "M1#foo/C#foo"
 
 
-### Simplified use modulizing all instance methods in module and including the module
+### Alternate simplified use modulizing all instance methods in module and including the module
 
     C.modulize_include M1
     C.new.foo == "M1#foo/C#foo"
 
 
+### Reverting the modulization specifying methods (this only undoes the alias_method but does not un-include the module(s))
+
+    C.unmodulize :foo # reverts method(s) to original call
+    C.new.foo == "C#foo"
+
+
+### Reverting the modulization for all instance methods in module (this also undoes the alias_method but does not un-include the module(s))
+
+    C.unmodulize_modules M1
+    C.new.foo == "C#foo"
+
+
 ## Different approach to extending without manual alias_method chaining
 
-Instead of manually alias_method chaining it would be nice to be able to extend methods as if they were included as modules even if you didn't write the original source. This allows you to simply call super to call the parent implementation. Subclassing will work but sometimes you want to modify the existing class because it is used or returned from other methods.
+Instead of manually alias_method chaining it would be nice to:
 
-In simple terms this approach effectively moves the method into an anonymous module so that you can simply include additional modules to override. In reality, we do have to do one single alias_method since we can't unbind the method and move directly, but subsequent calls do not need to do anything further. This eliminates the potential for aliasing clashes.
+ - be able to extend methods as if they were included as modules
+ - even if you didn't write the original source
+ - This allows you to simply call super to call the parent implementation
+ - Subclassing will work but sometimes you want to modify the existing class because it is used or returned from other methods
+
+Effectively it works like this:
+
+ - Moves the method(s) into an anonymous module and include it
+ - then you can simply include additional modules to override and call super if needed
+
+In reality it is slightly more complicated:
+
+ - we do have to do one single alias_method since we can't unbind the method and move directly
+ - but subsequent calls do not need to do anything further
+ - This eliminates the potential for aliasing clashes
 
 ## References and discussion
 
