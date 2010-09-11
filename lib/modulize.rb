@@ -88,4 +88,21 @@ class Module
     end
   end
 
+  # unmodulize methods in module(s) that were modulized in
+  #
+  # @param [Constant] mod_consts module name constant(s), will unmodulize all instance methods in the module, one or more
+  #
+  # @example unmodulize instance methods for module
+  #   unmodulize_modules MyModule
+  #
+  # @example unmodulize instance methods for several modules
+  #   unmodulize_modules MyModule1, MyModule2, MyModule3
+  #
+  # @example shortcut for unmodulizing and without re-opening class
+  #   MyClass.unmodulize_modules MyMod1, MyMod2, MyMod3
+  #
+  def unmodulize_modules(*mod_consts)
+    mod_consts.each { |mod_const| unmodulize *(mod_const.instance_methods) }
+  end
+
 end
