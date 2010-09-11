@@ -57,4 +57,35 @@ class Module
       include mod_const
     end
   end
+
+  # unmodulize a method that has been modulized, reverts to the original state.
+  #
+  # Care should be taken in using this since if others have also modulized after
+  # resulting in simply additional modules to be included, the result of this
+  # unmodulize will reinstate the original method to the class, so all module methods
+  # extensions will not be called.
+  #
+  # You only need to invoke this once, subsequent calls will just no-op
+  #
+  # Internally this simply reverts the alias. It does not try to clean up the
+  # anonymous module that was introduced but it will not be called
+  #
+  # @param [Symbol] symbol(s) for method to unmodulize, one or more
+  # @example Unmodulize a method
+  #   unmodulize :foo
+  # @example Unmodulize multiple methods
+  #   unmodulize :foo, :bar, :baz
+  def unmodulize(*method_syms)
+    method_syms.each do |method_sym|
+      methname = method_sym.to_s
+      orig_methname_sym = "#{methname}_before_modulize".to_sym
+      if instance_methods(false).include?(orig_methname_sym) # if it was modulized
+        class_eval <<-EOM
+          alias_method method_sym, orig_methname_sym
+          remove_method orig_methname_sym
+        EOM
+      end
+    end
+  end
+
 end

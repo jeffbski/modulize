@@ -1,5 +1,7 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
+# Simple example of use
+
 class ClassWithModulize
   def foo
     "ClassWithModulize#foo"
