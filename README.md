@@ -14,7 +14,7 @@ Safe, easy method extension
  - an unbound method retains affinity to the original class so we cannot simply use it in another module directly
  - http://yehudakatz.com/2010/02/15/abstractqueryfactoryfactories-and-alias_method_chain-the-ruby-way/
  - Rails 3 prefers to use modules with super to alias_method chains http://yehudakatz.com/2009/11/12/better-ruby-idioms/ http://yehudakatz.com/2009/03/06/alias_method_chain-in-models/
- - Reference to Yehuda Katz Refactoring Rails where they purposely use methods to be able to simply include modules and call super. This involves advanced planning and using modules rather than instance methods originally. http://www.wedesoft.demon.co.uk/no-alias-method-chain.html
+ - Reference to Yehuda Katz Refactoring Rails where they purposely use methods to be able to simply include modules and call super. This involves advanced planning and using modules rather than instance methods originally. http://www.wedesoft.demon.co.uk/no-alias-method-chain.html (This is probably the closest thing explaining)
  - Subclassing will work, but sometimes you need to modify the existing class since all of the methods return the same class, like String, Pathname
  - would like to simply use a module with the desired functionality, eliminating all the brittle aliasing and pre-thought about using modules because often the code you want to change is not your own
 
@@ -22,7 +22,6 @@ Safe, easy method extension
 ## TODO
 
  - Will this work like extend and only on certain instances?
- - Add undo to allow testing before and after
  - Make class methods work too
 
 ## Note on Patches/Pull Requests
