@@ -88,7 +88,7 @@ class Module
     end
   end
 
-  # unmodulize methods in module(s) that were modulized in
+  # unmodulize instance methods in module(s) that were modulized in
   #
   # @param [Constant] mod_consts module name constant(s), will unmodulize all instance methods in the module, one or more
   #

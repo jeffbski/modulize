@@ -15,33 +15,33 @@ Safe, easy method extension
 
 ### Given the following
 
-   Class C
-     def foo
-       "C#foo"
-     end
-   end
+    Class C
+      def foo
+        "C#foo"
+      end
+    end
 
-   module M1
-     def foo
-       "M1#foo/"+super
-     end
-   end
+    module M1
+      def foo
+        "M1#foo/"+super
+      end
+    end
 
 
 ### With manual include
 
-   Class C
-     modulize :foo # indicate which method(s) to modulize
-     include M1
-   end
+    Class C
+      modulize :foo # indicate which method(s) to modulize
+      include M1
+    end
 
-   C.new.foo == "M1#foo/C#foo"
+    C.new.foo == "M1#foo/C#foo"
 
 
-### Simplified use modulizing all methods in module and including
+### Simplified use modulizing all instance methods in module and including the module
 
-   C.modulize_include M1
-   C.new.foo == "M1#foo/C#foo"
+    C.modulize_include M1
+    C.new.foo == "M1#foo/C#foo"
 
 
 ## Different approach to extending without manual alias_method chaining
