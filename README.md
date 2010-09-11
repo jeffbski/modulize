@@ -68,11 +68,6 @@ In simple terms this approach effectively moves the method into an anonymous mod
 
 
 
-## TODO
-
- - Will this work like extend and only on certain instances?
- - Make class methods work too
-
 ## Note on Patches/Pull Requests
 
  - Fork the project.
