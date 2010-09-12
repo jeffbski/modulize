@@ -1,3 +1,4 @@
 --title "Modulize - safe, easy method extension"
 --main README.md
 --exclude ABOUT
+--asset implementation.png

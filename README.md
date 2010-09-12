@@ -11,6 +11,11 @@ Safe, easy method extension without manual alias_method chaining. Move existing 
  - simplify common use case
  - able to effectively reset functionality for testing
 
+## Implementation
+
+![Implementation Diagram](implementation.png)
+
+
 ## Usage
 
 ### For Overriding instance methods

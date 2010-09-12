@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="720"
+   height="600"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.47 r22583"
+   sodipodi:docname="implementation.svg">
+  <defs
+     id="defs4">
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+    <inkscape:perspective
+       id="perspective2927"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective2978"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective3025"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="278.50738"
+     inkscape:cy="295.51603"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1122"
+     inkscape:window-x="0"
+     inkscape:window-y="26"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-452.36218)">
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="31.036392"
+       y="541.21136"
+       id="text2841"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="31.036392"
+         y="541.21136"
+         id="tspan2889">class C</tspan><tspan
+         sodipodi:role="line"
+         x="31.036392"
+         y="558.71136"
+         id="tspan2845">  def foo; &quot;C#foo&quot;; end</tspan><tspan
+         sodipodi:role="line"
+         x="31.036392"
+         y="576.21136"
+         id="tspan2847">end</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="435.52075"
+       y="596.77582"
+       id="text2849"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="596.77582"
+         id="tspan2899">class C</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="614.27582"
+         id="tspan2853">  include anon_module</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="631.77582"
+         id="tspan2865">  def foo_before_modulize; &quot;C#foo&quot;; end</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="649.27582"
+         id="tspan2855">end</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="435.52075"
+       y="539.33478"
+       id="text2857"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="539.33478"
+         id="tspan2917">module anon_module</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="556.83478"
+         id="tspan2861">  def foo; foo_before_modulize; end</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="574.33478"
+         id="tspan2869">end</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="31.036392"
+       y="752.89062"
+       id="text2871"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2873"
+         x="31.036392"
+         y="752.89062">module M1</tspan><tspan
+         sodipodi:role="line"
+         x="31.036392"
+         y="770.39062"
+         id="tspan2875">  def foo; &quot;M1#foo/&quot;+super; end</tspan><tspan
+         sodipodi:role="line"
+         x="31.036392"
+         y="787.89062"
+         id="tspan2877">end</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="435.52075"
+       y="758.60327"
+       id="text2879"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2881"
+         x="435.52075"
+         y="758.60327">module M2</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="776.10327"
+         id="tspan2883">  def foo; &quot;M2#foo/&quot;+super; end</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="793.60327"
+         id="tspan2885">end</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="275.41422"
+       y="556.51294"
+       id="text2895"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2897"
+         x="275.41422"
+         y="556.51294">C.modulize :foo</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:22px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;line-height:125%;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="351.13828"
+       y="484.70532"
+       id="text2901"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2903"
+         x="351.13828"
+         y="484.70532">How it works</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="283.34314"
+       y="771.58398"
+       id="text2905"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2907"
+         x="283.34314"
+         y="771.58398">class C</tspan><tspan
+         sodipodi:role="line"
+         x="283.34314"
+         y="789.08398"
+         id="tspan2909">  include M1</tspan><tspan
+         sodipodi:role="line"
+         x="283.34314"
+         y="806.58398"
+         id="tspan2911">  include M2</tspan><tspan
+         sodipodi:role="line"
+         x="283.34314"
+         y="824.08398"
+         id="tspan2913">end</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="435.52075"
+       y="936.75317"
+       id="text2849-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="936.75317"
+         id="tspan2899-4">class C</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="954.25317"
+         id="tspan2853-9">  include anon_module</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="971.75317"
+         id="tspan2865-8">  def foo_before_modulize; &quot;C#foo&quot;; end</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="989.25317"
+         id="tspan3080">  include M1</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="1006.7532"
+         id="tspan3082">  include M2</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="1024.2532"
+         id="tspan2855-4">end</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="435.52075"
+       y="876.43359"
+       id="text2857-4"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="876.43359"
+         id="tspan2917-9">module anon_module</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="893.93359"
+         id="tspan2861-6">  def foo; foo_before_modulize; end</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="911.43359"
+         id="tspan2869-8">end</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="31.036392"
+       y="823.32111"
+       id="text2879-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2881-3"
+         x="31.036392"
+         y="823.32111">module M2</tspan><tspan
+         sodipodi:role="line"
+         x="31.036392"
+         y="840.82111"
+         id="tspan2883-1">  def foo; &quot;M2#foo/&quot;+super; end</tspan><tspan
+         sodipodi:role="line"
+         x="31.036392"
+         y="858.32111"
+         id="tspan2885-2">end</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="435.52075"
+       y="816.77844"
+       id="text2871-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan2873-6"
+         x="435.52075"
+         y="816.77844">module M1</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="834.27844"
+         id="tspan2875-3">  def foo; &quot;M1#foo/&quot;+super; end</tspan><tspan
+         sodipodi:role="line"
+         x="435.52075"
+         y="851.77844"
+         id="tspan2877-5">end</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="30.892838"
+       y="514.25391"
+       id="text3050"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3052"
+         x="30.892838"
+         y="514.25391"># original class</tspan><tspan
+         sodipodi:role="line"
+         x="30.892838"
+         y="531.75391"
+         id="tspan3054" /></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="593.96973"
+       y="25.122187"
+       id="text3058"
+       sodipodi:linespacing="125%"
+       transform="translate(0,452.36218)"><tspan
+         sodipodi:role="line"
+         id="tspan3060"
+         x="593.96973"
+         y="25.122187"></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="435.3772"
+       y="514.25391"
+       id="text3064"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         x="435.3772"
+         y="514.25391"
+         id="tspan3068"># after modulizing</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="30.892838"
+       y="717.9007"
+       id="text3072"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3074"
+         x="30.892838"
+         y="717.9007"># modules with methods to override</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:Arial;-inkscape-font-specification:Arial"
+       x="435.3772"
+       y="718.70831"
+       id="text3076"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan3078"
+         x="435.3772"
+         y="718.70831"># after including modules</tspan></text>
+  </g>
+</svg>
