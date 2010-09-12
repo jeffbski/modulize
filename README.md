@@ -23,9 +23,9 @@ Safe, easy method extension without manual alias_method chaining. Move existing 
       end
     end
 
-    module M1
+    module M1 # module containing methods which we want to override with
       def foo
-        "M1#foo/"+super
+        "M1#foo/"+super # do our thing then call the original
       end
     end
 
@@ -46,16 +46,20 @@ Safe, easy method extension without manual alias_method chaining. Move existing 
     C.new.foo == "M1#foo/C#foo"
 
 
-### Reverting the modulization specifying methods (this only undoes the alias_method but does not un-include the module(s))
+### Reverting the modulization specifying methods
+
+Note: This only undoes the alias_method but does not un-include the module(s), but effectively undoes the changes.
 
     C.unmodulize :foo # reverts method(s) to original call
-    C.new.foo == "C#foo"
+    C.new.foo == "C#foo"  # back to what orig method did
 
 
-### Reverting the modulization for all instance methods in module (this also undoes the alias_method but does not un-include the module(s))
+### Reverting the modulization for all instance methods in module
+
+Note: This only undoes the alias_method but does not un-include the module(s), but effectively undoes the changes.
 
     C.unmodulize_modules M1
-    C.new.foo == "C#foo"
+    C.new.foo == "C#foo"  # back to what orig method did
 
 
 ## Different approach to extending without manual alias_method chaining
@@ -90,7 +94,7 @@ In reality it is slightly more complicated:
  - an unbound method retains affinity to the original class so we cannot simply use it in another module directly
  - <http://yehudakatz.com/2010/02/15/abstractqueryfactoryfactories-and-alias_method_chain-the-ruby-way/>
  - Rails 3 prefers to use modules with super to alias_method chains <http://yehudakatz.com/2009/11/12/better-ruby-idioms/> <http://yehudakatz.com/2009/03/06/alias_method_chain-in-models/>
- - Reference to Yehuda Katz Refactoring Rails where they purposely use methods to be able to simply include modules and call super. This involves advanced planning and using modules rather than instance methods originally. <http://www.wedesoft.demon.co.uk/no-alias-method-chain.html> (This is probably the closest thing explaining what we are trying to automate)
+ - Reference to Yehuda Katz Refactoring Rails where methods are used to simply extension by including modules and calling super. This involves advanced planning and using modules rather than instance methods originally. <http://www.wedesoft.demon.co.uk/no-alias-method-chain.html> (This is probably the closest thing explaining what we are trying to automate)
  - Subclassing will work, but sometimes you need to modify the existing class since many of the methods return the same class, like String, Pathname
  - would like to simply use a module with the desired functionality, eliminating all the brittle aliasing and pre-thought about using modules because often the code you want to change is not your own
 
