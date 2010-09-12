@@ -1,13 +1,13 @@
 # Modulize
 
-Safe, easy method extension
+Safe, easy method extension without manual alias_method chaining. Move existing methods into a module for easy overriding with included module methods.
 
 ## Goals
 
  - easy to use
  - no manual alias_method chaining
- - use modules so we can simply call **super** in included modules
- - additional extensions can easily be added without conflict
+ - use modules so we can simply call **super** to override with included module instance methods
+ - additional extensions can easily be added without alias_method conflict
  - simplify common use case
  - able to reset functionality for testing
 
@@ -69,7 +69,7 @@ Instead of manually alias_method chaining it would be nice to:
 
 Effectively it works like this:
 
- - Moves the method(s) into an anonymous module and include it
+ - Moves the method(s) into an anonymous module and includes it
  - then you can simply include additional modules to override and call super if needed
 
 In reality it is slightly more complicated:

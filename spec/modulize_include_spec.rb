@@ -2,36 +2,36 @@ require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 # show use of modulize_include inside of a class, automatically modulizing methods
 
-class Bird
-  def fly
-    "Bird#fly"
+class ClassModulizeInclude
+  def foo
+    "ClassModulizeInclude#foo"
   end
 
-  def walk
-    "Bird#walk"
-  end
-end
-
-module M4
-  def fly
-    "M4#fly/"+super
-  end
-
-  def walk
-    "M4#walk/"+super
+  def bar
+    "ClassModulizeInclude#bar"
   end
 end
 
-class Bird
-  modulize_include M4
+module MModuleInclude1
+  def foo
+    "MModuleInclude1#foo/"+super
+  end
+
+  def bar
+    "MModuleInclude1#bar/"+super
+  end
 end
 
-describe Bird do
-  before(:each) { @bird = Bird.new }
+class ClassModulizeInclude
+  modulize_include MModuleInclude1
+end
+
+describe ClassModulizeInclude do
+  before(:each) { @obj = ClassModulizeInclude.new }
 
   it "should modulize all methods defined in Module and include them" do
-    @bird.fly.should == "M4#fly/Bird#fly"
-    @bird.walk.should == "M4#walk/Bird#walk"
+    @obj.foo.should == "MModuleInclude1#foo/ClassModulizeInclude#foo"
+    @obj.bar.should == "MModuleInclude1#bar/ClassModulizeInclude#bar"
   end
 end
 
@@ -39,22 +39,22 @@ end
 
 # show use of modulize_include without reopening class
 
-class BigFish
+class CModIncludeSimple
   def foo
-    "BigFish"
+    "CModIncludeSimple#foo"
   end
 end
 
-module MFish
+module MModIncludeSimple1
   def foo
-    "MFish"+super
+    "MModIncludeSimple1#foo/"+super
   end
 end
 
-BigFish.modulize_include MFish
+CModIncludeSimple.modulize_include MModIncludeSimple1
 
-describe BigFish do
-  subject { BigFish.new.foo }
+describe CModIncludeSimple do
+  subject { CModIncludeSimple.new.foo }
 
-  it { should == "MFishBigFish" }
+  it { should == "MModIncludeSimple1#foo/CModIncludeSimple#foo" }
 end

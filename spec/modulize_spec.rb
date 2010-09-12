@@ -8,90 +8,90 @@ class ClassWithModulize
   end
 end
 
-module M1
+module MWithModulize1
   def foo
-    "M1#foo/"+super
+    "MWithModulize1#foo/"+super
   end
 end
 
 class ClassWithModulize
   modulize :foo
-  include M1
+  include MWithModulize1
 end
 
 describe ClassWithModulize do
   subject { ClassWithModulize.new.foo }
 
   it "will call both M#foo and ClassWithModulize#foo" do
-    should == "M1#foo/ClassWithModulize#foo"
+    should == "MWithModulize1#foo/ClassWithModulize#foo"
   end
 end
 
 
 # Demonstrate that it does not break anything when called on a subclass it is just a no-op
 
-class Parent
+class ParentForSubclass
   def bar
-    "Parent#bar"
+    "ParentForSubclass#bar"
   end
 end
 
 
-class SubclassedClassWithMod < Parent
+class SubclassedClassWithMod < ParentForSubclass
 end
 
-module M2
+module MSubclass1
   def bar
-    "M2#bar/"+super
+    "MSubclass1#bar/"+super
   end
 end
 
 class SubclassedClassWithMod
   modulize :bar
-  include M2
+  include MSubclass1
 end
 
 describe SubclassedClassWithMod do
   subject { SubclassedClassWithMod.new.bar }
 
-  it { should == "M2#bar/Parent#bar" }
+  it { should == "MSubclass1#bar/ParentForSubclass#bar" }
 end
 
 
 # Demonstrate that it is safe to call multiple times, only the first call needs to do anything
 
 class ClassCallingMultipleTimes
-  def great_method
-    "It's great!"
+  def foo
+    "ClassCallingMultipleTimes#foo"
   end
 end
 
-module ModMultiCall
-  def great_method
-    "It's awesome! "+super
+module MCallingMultipleTimes
+  def foo
+    "MCallingMultipleTimes#foo/"+super
   end
 end
 
 class ClassCallingMultipleTimes # someone does this
-  modulize :great_method
-  include ModMultiCall
+  modulize :foo
+  include MCallingMultipleTimes
 end
 
 
 # Now another person calls it again to extend
 
-module ModMultiCall2
-  def great_method
-    "It's wonderful!! "+super
+module MCallingMultipleTimes2
+  def foo
+    "MCallingMultipleTimes2#foo/"+super
   end
 end
 
 class ClassCallingMultipleTimes # This time it doesn't have to do anything, already a module, so no-op
-  modulize :great_method
-  include ModMultiCall2
+  modulize :foo
+  include MCallingMultipleTimes2
 end
 
 describe "modulize being called multiple times will work correctly, no-op on successive calls" do
-  subject { ClassCallingMultipleTimes.new.great_method }
-  it { should == "It's wonderful!! It's awesome! It's great!" }
+  subject { ClassCallingMultipleTimes.new.foo }
+  it { should == "MCallingMultipleTimes2#foo/MCallingMultipleTimes#foo/ClassCallingMultipleTimes#foo" }
 end

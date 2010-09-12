@@ -1,53 +1,57 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
+# show how things work without modulize
+
 class ClassNoModulize
   def foo
     "ClassNoModulize#foo"
   end
 end
 
-module M
+module MNoModulize
   def foo
-    "M#foo/"+super
+    "MNoModulize#foo/"+super
   end
 end
 
 class ClassNoModulize
-  include M
+  include MNoModulize
 end
 
 describe ClassNoModulize do
   subject { ClassNoModulize.new.foo }
 
-  it "will stop at ClassNoModulize#foo not calling M#foo" do
+  it "will stop at ClassNoModulize#foo not calling MNoModulize#foo" do
     should == "ClassNoModulize#foo"
   end
 end
 
 
 
-class ParentNoMod
-  def bar
-    "ParentNoMod#bar"
+# show that if sublcassed then module works without modulize
+
+class CParentNoMod
+  def foo
+    "CParentNoMod#foo"
   end
 end
 
-class SubclassedClassNoMod < ParentNoMod
+class CSubclassedNoMod < CParentNoMod
 end
 
 module M2
-  def bar
-    "M2#bar/"+super
+  def foo
+    "M2#foo/"+super
   end
 end
 
-class SubclassedClassNoMod
+class CSubclassedNoMod
   include M2
 end
 
-describe SubclassedClassNoMod do
-  subject { SubclassedClassNoMod.new.bar }
+describe CSubclassedNoMod do
+  subject { CSubclassedNoMod.new.foo }
 
-  it { should == "M2#bar/ParentNoMod#bar" }
+  it { should == "M2#foo/CParentNoMod#foo" } # should still work since method was from parent
 end
 

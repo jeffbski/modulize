@@ -1,79 +1,85 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-class Cat
-  def sleep
-    "Cat#sleep"
+# show use of multiple methods in one call
+
+class CMulti1
+  def foo
+    "CMulti1#foo"
   end
 
-  def eat
-    "Cat#eat"
-  end
-end
-
-module Hunting
-  def sleep
-    "Hunting#sleep/"+super
-  end
-
-  def eat
-    "Hunting#eat/"+super
+  def bar
+    "CMulti1#bar"
   end
 end
 
-class Cat
-  modulize :sleep, :eat
-  include Hunting
-end
-
-class Dog
-  def speak(what)
-    "Dog#speak(#{what})"
+module MMulti1
+  def foo
+    "MMulti1#foo/"+super
   end
 
-  def find
-    "Dog#find/"+yield
+  def bar
+    "MMulti1#bar/"+super
   end
 end
 
-module M3
-  def speak(what)
-    "M3#speak(#{what})/"+super
-  end
-
-  def find
-    "M3#find/"+yield+"/"+super
-  end
+class CMulti1
+  modulize :foo, :bar
+  include MMulti1
 end
 
-class Dog
-  modulize :speak, :find
-  include M3
-end
-
-describe Cat do
-  before(:each) { @cat = Cat.new }
+describe CMulti1 do
+  before(:each) { @obj = CMulti1.new }
 
   it "should modulize multiple methods in one call" do
-    @cat.sleep.should == "Hunting#sleep/Cat#sleep"
-    @cat.eat.should == "Hunting#eat/Cat#eat"
+    @obj.foo.should == "MMulti1#foo/CMulti1#foo"
+    @obj.bar.should == "MMulti1#bar/CMulti1#bar"
   end
+end
+
+
+
+# Show multiple methods and can use args and blocks
+
+class CMultiWArgBlock
+  def foo(arg1)
+    "CMultiWArgBlock#foo(#{arg1})"
+  end
+
+  def bar
+    "CMultiWArgBlock#bar/"+yield
+  end
+end
+
+module MMultiWArgBlock
+  def foo(arg1)
+    "MMultiWArgBlock#foo(#{arg1})/"+super
+  end
+
+  def bar
+    "MMultiWArgBlock#bar/"+yield+"/"+super
+  end
+end
+
+class CMultiWArgBlock
+  modulize :foo, :bar
+  include MMultiWArgBlock
 end
 
 
 # show that methods can use blocks too
-describe Dog do
-  describe "speak" do
-    subject { Dog.new.speak("bowwow") }
-    it { should == "M3#speak(bowwow)/Dog#speak(bowwow)" }
+describe CMultiWArgBlock do
+  describe "foo" do
+    subject { CMultiWArgBlock.new.foo("myArg1") }
+    it { should == "MMultiWArgBlock#foo(myArg1)/CMultiWArgBlock#foo(myArg1)" }
   end
 
-  describe "find" do
+  describe "bar" do
     subject do
-      Dog.new.find do
-        "bone"
+      CMultiWArgBlock.new.bar do
+        "fromBlock"
       end
     end
 
-    it { should == "M3#find/bone/Dog#find/bone" }
+    it { should == "MMultiWArgBlock#bar/fromBlock/CMultiWArgBlock#bar/fromBlock" }
   end
 end

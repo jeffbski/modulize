@@ -1,12 +1,13 @@
-# Modulize makes it easy to override a method without manually alias chaining and
-# it moves the original method into a module to make it easy to call the parent method using super.
+# Modulize makes it easy to override a method without manually alias chaining.
+# It effectively moves the original method into a module to make it easy to call
+# the parent method using super.
 #
 # If a method does not exist, is defined in a parent, defined in a module already,
-# or if modulize has already been called, then calling it again is safe and results in
-# a no-op.
+# or if modulize has already been called, then invoking it again is safe and simple no-op.
 #
-# This makes it safer to use than alias_method chaining, eliminating the possibility of
-# alias clashes and clutter from multiple use.
+# This provides an easy safe way to override methods than alias_method chaining. It eliminats the possibility of
+# alias clashes and clutter from multiple uses. Extensions are as easy as creating a module
+# modulizing and including.
 #
 class Module
   # if method is defined in the class/module (not inherited from module or class) then
