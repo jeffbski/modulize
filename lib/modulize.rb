@@ -19,6 +19,7 @@ class Module
   # module which calls original.
   #
   # @param [Symbol] symbol(s) for method to modulize, one or more
+  #
   # @example Modulize a method
   #   class C
   #     modulize :foo
