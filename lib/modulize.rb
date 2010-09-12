@@ -20,15 +20,25 @@ class Module
   #
   # @param [Symbol] symbol(s) for method to modulize, one or more
   #
-  # @example Modulize a method
+  # @example Modulize an instance method
   #   class C
   #     modulize :foo
+  #     include M      # module containing methods to override C with
   #   end
   #
-  # @example Modulize multiple methods
+  # @example Modulize multiple instance methods
   #   class C
   #     modulize :foo, :bar, :baz
+  #     include M      # module containing methods to override C instance methods with
   #   end
+  #
+  # @example Modulize a class method(s)
+  #   class CC
+  #      class << self                 # switch into metaclass
+  #        modulize :foo, :bar, :baz   # indicate which method(s) to modulize
+  #        include MCC                 # module containing method(s) to override CC class methods with
+  #      end
+  #    end
   #
   def modulize(*method_syms)
     method_syms.each do |method_sym|
@@ -59,8 +69,15 @@ class Module
   #     modulize_include MyModule1, MyModule2, MyModule3
   #   end
   #
-  # @example shortcut for modulizing and including without re-opening class
-  #   MyClass.modulize_include MyMod1, MyMod2, MyMod3
+  # @example shortcut for modulizing and including without manually re-opening class
+  #   C.modulize_include MyMod1, MyMod2, MyMod3
+  #
+  # @example modulize class method(s) contained in module and include the module
+  #   class CC
+  #      class << self            # switch into metaclass
+  #        modulize_include MCC   # override CC's class methods contained in MCC
+  #      end
+  #    end
   #
   def modulize_include(*mod_consts)
     mod_consts.each do |mod_const|
@@ -83,15 +100,25 @@ class Module
   #
   # @param [Symbol] symbol(s) for method to unmodulize, one or more
   #
-  # @example Unmodulize a method
+  # @example Unmodulize an instance method
   #   class C
   #     unmodulize :foo
   #   end
   #
-  # @example Unmodulize multiple methods
+  # @example Unmodulize multiple instance methods
   #   class C
   #     unmodulize :foo, :bar, :baz
   #   end
+  #
+  # @example Shortcut to unmodulize multiple instance methods without manually re-opening class
+  #   C.unmodulize :foo, :bar, :baz
+  #
+  # @example Unmodulize class method(s)
+  #   class CC
+  #      class << self                     # switch into metaclass
+  #        unmodulize :foo, :bar, :baz     # indicate which method(s) to return to revert
+  #      end
+  #    end
   #
   def unmodulize(*method_syms)
     method_syms.each do |method_sym|
@@ -120,8 +147,15 @@ class Module
   #     unmodulize_modules MyModule1, MyModule2, MyModule3
   #   end
   #
-  # @example shortcut for unmodulizing and without re-opening class
+  # @example shortcut for unmodulizing and without manually re-opening class
   #   MyClass.unmodulize_modules MyMod1, MyMod2, MyMod3
+  #
+  # @example unmodulize class method(s) contained in module
+  #   class CC
+  #      class << self               # switch into metaclass
+  #        unmodulize_modules MCC    # revert class methods contained MCC
+  #      end
+  #    end
   #
   def unmodulize_modules(*mod_consts)
     mod_consts.each { |mod_const| unmodulize *(mod_const.instance_methods) }
