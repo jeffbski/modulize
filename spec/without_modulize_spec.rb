@@ -18,7 +18,7 @@ class ClassNoModulize
   include MNoModulize
 end
 
-describe ClassNoModulize do
+describe "without modulize" do
   subject { ClassNoModulize.new.foo }
 
   it "will stop at ClassNoModulize#foo not calling MNoModulize#foo" do
@@ -49,7 +49,7 @@ class CSubclassedNoMod
   include M2
 end
 
-describe CSubclassedNoMod do
+describe "if sublcassed then module works without modulize" do
   subject { CSubclassedNoMod.new.foo }
 
   it { should == "M2#foo/CParentNoMod#foo" } # should still work since method was from parent
@@ -71,7 +71,7 @@ module MModInstance1
   end
 end
 
-describe CModInstance1 do
+describe "extending a single class instance methods with a module works without needing modulize" do
   before(:each) do
     @obj = CModInstance1.new
     @obj.extend MModInstance1

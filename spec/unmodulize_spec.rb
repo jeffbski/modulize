@@ -23,7 +23,7 @@ class ClassShowingUndo1
   unmodulize :foo
 end
 
-describe ClassShowingUndo1 do
+describe "unmodulize can undo and restore to the original call stack" do
   subject { ClassShowingUndo1.new.foo }
 
   it "will call only ClassShowingUndo1#foo" do
@@ -59,7 +59,7 @@ class ClassShowingUndo2
   unmodulize :foo
 end
 
-describe ClassShowingUndo2 do
+describe "calling unmodulize multiple times does not hurt anything" do
   subject { ClassShowingUndo2.new.foo }
 
   it "will call only ClassShowingUndo2#foo" do
@@ -102,7 +102,7 @@ class ClassShowingUndo3
   unmodulize :foo
 end
 
-describe ClassShowingUndo3 do
+describe "only necessary to call once to undo all modulize calls" do
   subject { ClassShowingUndo3.new.foo }
 
   it "will call only ClassShowingUndo3#foo" do

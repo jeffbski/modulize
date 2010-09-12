@@ -26,7 +26,7 @@ class ClassModulizeInclude
   modulize_include MModuleInclude1
 end
 
-describe ClassModulizeInclude do
+describe "modulize_include inside of a class, automatically modulizing methods" do
   before(:each) { @obj = ClassModulizeInclude.new }
 
   it "should modulize all methods defined in Module and include them" do
@@ -53,7 +53,7 @@ end
 
 CModIncludeSimple.modulize_include MModIncludeSimple1
 
-describe CModIncludeSimple do
+describe "modulize_include without reopening class" do
   subject { CModIncludeSimple.new.foo }
 
   it { should == "MModIncludeSimple1#foo/CModIncludeSimple#foo" }

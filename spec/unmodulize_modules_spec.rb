@@ -31,7 +31,7 @@ class ClassShowUnmodMods
 end
 
 
-describe ClassShowUnmodMods do
+describe "unmodulize_modules, automatically calling unmodulize for all module methods" do
   before(:each) { @obj = ClassShowUnmodMods.new }
 
   it "should modulize all methods defined in Module and include them" do
@@ -41,7 +41,7 @@ describe ClassShowUnmodMods do
 end
 
 
-# show use of modulize_include without reopening class
+# show use of unmodulize_modules without reopening class
 
 class ClassShowUnmodMods2
   def foo
@@ -83,7 +83,7 @@ class ClassShowUnmodMods2
 end
 
 
-describe ClassShowUnmodMods2 do
+describe "unmodulize_modules without reopening class" do
   before(:each) { @obj = ClassShowUnmodMods2.new }
 
   it "should modulize all methods defined in Module and include them" do
@@ -130,7 +130,7 @@ ClassShowUnmodMods3.modulize_include MShowUnmodMods31, MShowUnmodMods32
 ClassShowUnmodMods3.unmodulize_modules MShowUnmodMods31, MShowUnmodMods32
 
 
-describe ClassShowUnmodMods3 do
+describe "unmodulize called as a class method (without manually reopening)" do
   before(:each) { @obj = ClassShowUnmodMods3.new }
 
   it "should modulize all methods defined in Module and include them" do
@@ -178,7 +178,7 @@ ClassShowUnmodMods4.unmodulize_modules MShowUnmodMods41, MShowUnmodMods42
 ClassShowUnmodMods4.unmodulize_modules MShowUnmodMods41, MShowUnmodMods42
 
 
-describe ClassShowUnmodMods4 do
+describe "additional calls to unmodulize do not cause any problem" do
   before(:each) { @obj = ClassShowUnmodMods4.new }
 
   it "should modulize all methods defined in Module and include them" do

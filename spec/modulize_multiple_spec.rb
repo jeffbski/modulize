@@ -27,7 +27,7 @@ class CMulti1
   include MMulti1
 end
 
-describe CMulti1 do
+describe "multiple methods in one call" do
   before(:each) { @obj = CMulti1.new }
 
   it "should modulize multiple methods in one call" do
@@ -66,8 +66,7 @@ class CMultiWArgBlock
 end
 
 
-# show that methods can use blocks too
-describe CMultiWArgBlock do
+describe "multiple methods and can use args and blocks" do
   describe "foo" do
     subject { CMultiWArgBlock.new.foo("myArg1") }
     it { should == "MMultiWArgBlock#foo(myArg1)/CMultiWArgBlock#foo(myArg1)" }

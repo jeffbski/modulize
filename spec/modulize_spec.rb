@@ -19,7 +19,7 @@ class ClassWithModulize
   include MWithModulize1
 end
 
-describe ClassWithModulize do
+describe "basic use of modulize" do
   subject { ClassWithModulize.new.foo }
 
   it "will call both M#foo and ClassWithModulize#foo" do
@@ -51,7 +51,7 @@ class SubclassedClassWithMod
   include MSubclass1
 end
 
-describe SubclassedClassWithMod do
+describe "does not break anything when called on a subclass" do
   subject { SubclassedClassWithMod.new.bar }
 
   it { should == "MSubclass1#bar/ParentForSubclass#bar" }
