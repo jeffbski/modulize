@@ -7,13 +7,15 @@ Safe, easy method extension without manual alias_method chaining. Move existing 
  - easy to use
  - no manual alias_method chaining
  - use modules so we can simply call **super** to override with included module instance methods
- - additional extensions can easily be added without alias_method conflict
+ - additional extensions can easily be added without possibility of alias_method conflict (only a **single alias_method** is needed for each method, regardless of the number of times it is overriden with modulize)
  - simplify common use case
- - able to reset functionality for testing
+ - able to effectively reset functionality for testing
 
 ## Usage
 
-### Given the following
+### For Overriding instance methods
+
+**Given the following class and module with methods to override**
 
     require 'modulize'
 
@@ -30,7 +32,7 @@ Safe, easy method extension without manual alias_method chaining. Move existing 
     end
 
 
-### Using with manual include and specifying individual module(s)
+#### Using with manual include and specifying individual module(s)
 
     class C
       modulize :foo # indicate which method(s) to modulize
@@ -40,13 +42,13 @@ Safe, easy method extension without manual alias_method chaining. Move existing 
     C.new.foo == "M1#foo/C#foo"
 
 
-### Alternate simplified use modulizing all instance methods in module and including the module
+#### Alternate simplified use modulizing all instance methods in module and including the module
 
     C.modulize_include M1
     C.new.foo == "M1#foo/C#foo"
 
 
-### Reverting the modulization specifying methods
+#### Reverting the modulization specifying methods
 
 Note: This only undoes the alias_method but does not un-include the module(s), but effectively undoes the changes.
 
@@ -54,7 +56,7 @@ Note: This only undoes the alias_method but does not un-include the module(s), b
     C.new.foo == "C#foo"  # back to what orig method did
 
 
-### Reverting the modulization for all instance methods in module
+#### Reverting the modulization for all instance methods in module
 
 Note: This only undoes the alias_method but does not un-include the module(s), but effectively undoes the changes.
 
@@ -62,7 +64,76 @@ Note: This only undoes the alias_method but does not un-include the module(s), b
     C.new.foo == "C#foo"  # back to what orig method did
 
 
-## Different approach to extending without manual alias_method chaining
+### For Overriding class methods
+
+**Given the following class and module with class methods to override**
+
+    require 'modulize'
+
+    class CC
+      def self.bar  # class method
+        "CC#bar"
+      end
+    end
+
+    module MCC # module containing class methods which we want to override with
+      def bar
+        "MCC#bar/"+super # do our thing then call the original
+      end
+    end
+
+
+#### Using metaclass with manual include and specifying individual module(s)
+
+    class CC
+      class << self  # switch into metaclass
+        modulize :bar # indicate which method(s) to modulize
+        include MCC
+      end
+    end
+
+    CC.bar == "MCC#bar/C#bar"
+
+
+#### Alternate approach using metaclass with modulize_include to modulize all methods in module and including the module
+
+    class CC
+      class << self  # switch into metaclass
+        modulize_include MCC  # modulize all methods as class methods and include the module
+      end
+    end
+
+    CC.bar == "MCC#bar/C#bar"
+
+
+#### Reverting the modulization specifying class methods
+
+Note: This only undoes the alias_method but does not un-include the module(s), but effectively undoes the changes.
+
+    class CC
+      class << self  # switch into metaclass
+        unmodulize :bar  # revert method(s) back to original call
+      end
+    end
+
+    CC.bar == "C#bar"
+
+
+#### Reverting the modulization for all instance methods in module
+
+Note: This only undoes the alias_method but does not un-include the module(s), but effectively undoes the changes.
+
+    class CC
+      class << self  # switch into metaclass
+        unmodulize_modules MCC  # revert method(s)in the module(s) back to original call
+      end
+    end
+
+    CC.bar == "C#bar"
+
+
+
+## Reasoning - A different approach to extending without manual alias_method chaining
 
 Instead of manually alias_method chaining it would be nice to:
 
@@ -87,7 +158,7 @@ In reality it is slightly more complicated:
  - in aliasing, you have to worry about others using same name for old alias (not unique)
  - <http://whynotwiki.com/Ruby_/_Method_aliasing_and_chaining> - discusses alias chaining and a facet or ActiveSuppport method called alias_method_chain, however still can cause infinite loop and need to know what method to call if you want to delegate up the chain.
  - must check if alias already exists before doing, no guarantee that everyone will use unique feature names
- - Ara Howard suggests this solution to be a nicer alias_method_chain allowing super, but I find it harder to understand and and more complex code <http://drawohara.com/post/7241442/ruby-saner-way-to-redefine-methods>
+ - Ara Howard suggests this solution to be a nicer alias_method_chain allowing super <http://drawohara.com/post/7241442/ruby-saner-way-to-redefine-methods>
  - Jay Fields mentions a technique to get reference to unbound method, then call it from in a define_method, so that you do not leave any artifacts around like the old method. This involves re-opening the class and defining methods in the class which call to the unbound method. You do not have ability to call old method directly by design and may be difficult to undo. <http://blog.jayfields.com/2006/12/ruby-alias-method-alternative.html>
  - Another blog discussing the unbind technique <http://split-s.blogspot.com/2006/01/replacing-methods.html>
  - Daniel Cadenas implementation of the unbind method with undo - <http://www.danielcadenas.com/2007/11/bit-of-metaprogramming.html>
