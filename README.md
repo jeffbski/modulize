@@ -32,7 +32,7 @@ Safe, easy method extension without manual alias_method chaining. Move existing 
     end
 
 
-#### Using with manual include and specifying individual module(s)
+#### Using by specifying individual methods(s), and manual include
 
     class C
       modulize :foo # indicate which method(s) to modulize
@@ -83,11 +83,11 @@ Note: This only undoes the alias_method but does not un-include the module(s), b
     end
 
 
-#### Using metaclass with manual include and specifying individual module(s)
+#### Using metaclass, specifying individual methods(s), manual include
 
     class CC
-      class << self  # switch into metaclass
-        modulize :bar # indicate which method(s) to modulize
+      class << self    # switch into metaclass
+        modulize :bar  # indicate which method(s) to modulize
         include MCC
       end
     end
