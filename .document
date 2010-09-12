@@ -1,7 +1,8 @@
-README
+ABOUT
 lib/**/*.rb
 bin/*
 features/**/*.feature
 -
+README.md
 LICENSE
 TODO.md
