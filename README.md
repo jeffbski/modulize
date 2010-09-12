@@ -95,7 +95,7 @@ In reality it is slightly more complicated:
  - <http://yehudakatz.com/2010/02/15/abstractqueryfactoryfactories-and-alias_method_chain-the-ruby-way/>
  - Rails 3 prefers to use modules with super to alias_method chains <http://yehudakatz.com/2009/11/12/better-ruby-idioms/> <http://yehudakatz.com/2009/03/06/alias_method_chain-in-models/>
  - Reference to Yehuda Katz Refactoring Rails where methods are used to simplify extension by including modules and calling super. This involves advanced planning and using modules rather than instance methods originally. <http://www.wedesoft.demon.co.uk/no-alias-method-chain.html> (This is probably the closest thing explaining what we are trying to automate)
- - Subclassing will work, but sometimes you need to modify the existing class since many of the methods return the same class, like String, Pathname
+ - Subclassing or individual class instance extension will work, but sometimes you need to modify the existing class since many of the methods return the same class, like String, Pathname
  - would like to simply use a module with the desired functionality, eliminating all the brittle aliasing and pre-thought about using modules because often the code you want to change is not your own
 
 
