@@ -1,4 +1,3 @@
 ## TODO
 
- - Should we make class methods work
-
+ - make class method extension easier like module_include?
