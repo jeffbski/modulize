@@ -1,1 +1,3 @@
 --title "Modulize - safe, easy method extension"
+--main README.md
+--exclude README
