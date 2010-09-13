@@ -5,9 +5,9 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "modulize"
-    gem.summary = %Q{Make it easier to plugin methods}
-    gem.description = %Q{Aliases and moves methods into modules to make it easier to plugin and override methods}
-    gem.email = "jeff.barczewski@gmail.com"
+    gem.summary = %Q{Safe, easy method extension without manual alias_method chaining}
+    gem.description = %Q{Safe, easy method extension without manual alias_method chaining. Move existing methods into a module for easy overriding with included module methods.}
+    gem.email = "jeff.barczewski (at) gmail (dot) com OR twitter: @jeffbski"
     gem.homepage = "http://github.com/jeffbski/modulize"
     gem.authors = ["Jeff Barczewski"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
