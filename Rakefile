@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "modulize"
-    gem.summary = %Q{Safe, easy method extension without manual alias_method chaining}
+    gem.summary = %Q{Safe, easy method override/extension without manual alias_method chaining}
     gem.description = %Q{Safe, easy method extension without manual alias_method chaining. Move existing methods into a module for easy overriding with included module methods.}
     gem.email = "jeff.barczewski (at) gmail (dot) com OR twitter: @jeffbski"
     gem.homepage = "http://github.com/jeffbski/modulize"

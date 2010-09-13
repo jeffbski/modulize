@@ -1,6 +1,6 @@
 # Modulize
 
-Safe, easy method extension without manual alias_method chaining. Move existing methods into a module for easy overriding with included module methods.
+Safe, easy method override/extension without manual alias_method chaining. Move existing methods into a module for easy overriding with included module methods.
 
 ## Goals
 
