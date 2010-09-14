@@ -15,7 +15,7 @@ Safe, easy method override/extension without manual alias_method chaining. Move 
 
 ![Implementation Diagram - implementation.png](implementation.png)
 
-Note: If this diagram (implementation.png) does not come up inline - [click here to view the diagram](implementation.png) or visit the graphic in the source tree.
+Note: If this diagram (implementation.png) does not come up inline, you can view it in root of this source directory.
 
 ## Installation
 
