@@ -13,7 +13,14 @@ Safe, easy method override/extension without manual alias_method chaining. Move 
 
 ## Implementation
 
-![Implementation Diagram](implementation.png)
+![Implementation Diagram - implementation.png](implementation.png)
+
+Note: If this diagram (implementation.png) does not come up inline - [click here to view the diagram](implementation.png) or visit the graphic in the source tree.
+
+## Installation
+
+    # after aquiring this file or gem
+    require 'modulize'
 
 
 ## Usage
@@ -163,7 +170,7 @@ In reality it is slightly more complicated:
  - in aliasing, you have to worry about others using same name for old alias (not unique)
  - <http://whynotwiki.com/Ruby_/_Method_aliasing_and_chaining> - discusses alias chaining and a facet or ActiveSuppport method called alias_method_chain, however still can cause infinite loop and need to know what method to call if you want to delegate up the chain.
  - must check if alias already exists before doing, no guarantee that everyone will use unique feature names
- - Ara Howard suggests this solution to be a nicer alias_method_chain allowing super <http://drawohara.com/post/7241442/ruby-saner-way-to-redefine-methods>
+ - Ara Howard suggests a solution using blocks to be a nicer alias_method_chain allowing super <http://drawohara.com/post/7241442/ruby-saner-way-to-redefine-methods>
  - Jay Fields mentions a technique to get reference to unbound method, then call it from in a define_method, so that you do not leave any artifacts around like the old method. This involves re-opening the class and defining methods in the class which call to the unbound method. You do not have ability to call old method directly by design and may be difficult to undo. <http://blog.jayfields.com/2006/12/ruby-alias-method-alternative.html>
  - Another blog discussing the unbind technique <http://split-s.blogspot.com/2006/01/replacing-methods.html>
  - Daniel Cadenas implementation of the unbind method with undo - <http://www.danielcadenas.com/2007/11/bit-of-metaprogramming.html>
