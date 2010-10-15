@@ -9,7 +9,7 @@ Given a project that makes heavy use of Pathname there might be aspects of the A
 
 For instance, if we wanted to extend Pathname.find() so that it accepts a filter. The implementation currently only accepts a block, so one would have to chain multiple methods together to get a fnmatch added to find.
 
-     Pathname.find.select {|pn| Pathname.fnmatch?("*.rb", pn)}
+     Pathname.find.select {|pn| Pathname.fnmatch?(filter, pn)}
 
 One way of doing this is to add a new method Pathname.find_filtered, but now the API is expanding and it can become confusing to know when to use one vs other and which one takes args, etc. The standard method for finding an object in many classes is find, so ideally this would be the intuitive if we were to simply overload the find and handle the case where filter is passed in.
 
@@ -24,7 +24,7 @@ So the next idea is just reopening Pathname and using alias_method.
          if filter.nil?
            find_old(&block)
          else # we have the filter so use it
-           list = find_old.select { |pn| Pathname.fnmatch?("*.rb", pn) }
+           list = find_old.select { |pn| Pathname.fnmatch?(filter, pn) }
            if block_given?
              list.each {|pn| yield pn}
            end
@@ -48,7 +48,7 @@ However if you don't own the source code then these kinds of changes aren't very
          if filter.nil?
            super(&block)
          else
-           list = super().select { |pn| Pathname.fnmatch?("*.rb", pn) }
+           list = super().select { |pn| Pathname.fnmatch?(filter, pn) }
            if block_given?
              list.each {|pn| yield pn}
            end
